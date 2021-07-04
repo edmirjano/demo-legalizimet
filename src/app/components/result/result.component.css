@@ -1,0 +1,15 @@
+.result{
+  text-align: center;
+  font-size: 60px;
+  height: 80px;
+}
+.red{
+  color: red;
+}
+.green{
+  color: green;
+}
+.butoni{
+  display: flex;
+  justify-content: space-around;
+}

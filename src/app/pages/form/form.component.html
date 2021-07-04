@@ -1,0 +1,325 @@
+<div class="content">
+  <div class="form">
+    <form
+    *ngIf="form"
+    fxLayout="column"
+    [formGroup]="form"
+    (ngSubmit)="onFormSubmit(form.value)"
+    >
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Plotesioni te dhenat e meposhte qe te merrni rrezultatin:</h2>
+      </mat-card-title>
+    </mat-card-header>
+
+    <h4>Emri</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Emri</mat-label>
+      <input matInput autocomplete="off" formControlName="emri" />
+      <mat-error *ngIf="form.controls.emri.errors?.required"
+        >Emri eshte i detyrueshem</mat-error
+      >
+    </mat-form-field>
+    <br>
+
+    <h4>Cenon Kriteret e Moscenimit</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Cenon Kriteret e Moscenimit</mat-label>
+      <mat-select formControlName="cenonKritereteMoscenimit" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.cenonKritereteMoscenimit.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Siperfaqja (ne metra katror)</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>siperfaqja</mat-label>
+      <input matInput autocomplete="off" type="number" formControlName="siperfaqja" />
+      <mat-error *ngIf="form.controls.siperfaqja.errors?.required"
+        >Siperfaqja eshte i detyrueshem</mat-error
+      >
+    </mat-form-field>
+    <br>
+
+    <!-- <h4>Genplani</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Genplani</mat-label>
+      <input matInput autocomplete="off" formControlName="genplani" />
+      <mat-error *ngIf="form.controls.genplani.errors?.required"
+        >Genplani eshte i detyrueshem</mat-error
+      >
+    </mat-form-field>
+    <br> -->
+
+
+    <h4>Eshte Objekt Ne Shkelje Te Lejes Se Ndertimit</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Eshte Objekt Ne Shkelje Te Lejes Se Ndertimit</mat-label>
+      <mat-select formControlName="eshteObjektNeShkeljeTeLejesSeNdertimit" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.cenonKritereteMoscenimit.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Eshte Posedues</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Eshte Posedues</mat-label>
+      <mat-select formControlName="eshtePosedues" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.eshtePosedues.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Zone Informale Apo Urbane</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Zone Informale Apo Urbane</mat-label>
+      <mat-select formControlName="zoneInformaleApoUrbane" required>
+        <mat-option>--</mat-option>
+        <mat-option value="Informale">Informale</mat-option>
+        <mat-option value="Urbane">Urbane</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.zoneInformaleApoUrbane.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Eshte Vije Bregdetare</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Eshte Vije Bregdetare</mat-label>
+      <mat-select formControlName="eshteVijeBregdetare" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.eshteVijeBregdetare.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Kurifi Rrugor (ne metra)</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Kurifi Rrugor</mat-label>
+      <input matInput autocomplete="off" type="number" formControlName="kurifiRrugor" />
+      <mat-error *ngIf="form.controls.kurifiRrugor.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Rruge Kombetare Apo JoKombetare</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Rruge Kombetare Apo JoKombetare</mat-label>
+      <mat-select formControlName="rrugeKombetareApoJoKombetare" required>
+        <mat-option>--</mat-option>
+        <mat-option value="Kombetare">Kombetare</mat-option>
+        <mat-option value="JoKombetare">JoKombetare</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.rrugeKombetareApoJoKombetare.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Ploteson Cilesine Ndertimore</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Ploteson Cilesine Ndertimore</mat-label>
+      <mat-select formControlName="plotesonCilesineNdertimore" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.plotesonCilesineNdertimore.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+
+    <h4>Eshte Trashegimi Kulturore</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Eshte Trashegimi Kulturore</mat-label>
+      <mat-select formControlName="eshteTrashegimiKulturore" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.eshteTrashegimiKulturore.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Shkel Brezin Mbrojtes Te Gazsjellesit</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Shkel Brezin Mbrojtes Te Gazsjellesit</mat-label>
+      <mat-select formControlName="shkelBrezinMbrojtesTeGazsjellesit" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.shkelBrezinMbrojtesTeGazsjellesit.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Cenon Integritetin E Parkut Arkeologjik</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Cenon Integritetin E Parkut Arkeologjik</mat-label>
+      <mat-select formControlName="cenonIntegritetinEParkutArkeologjik" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.cenonIntegritetinEParkutArkeologjik.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Eshte Zone E Sigurise</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Eshte Zone E Sigurise</mat-label>
+      <mat-select formControlName="eshteZoneESigurise" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.eshteZoneESigurise.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Cenon Pamjen E Jashtme Te Monumentit Te Kultures</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Cenon Pamjen E Jashtme Te Monumentit Te Kultures</mat-label>
+      <mat-select formControlName="cenonPamjenEJashtmeTeMonumentitTeKultures" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.cenonPamjenEJashtmeTeMonumentitTeKultures.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Cenon Territorin E Ndertesave Publike</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Cenon Territorin E Ndertesave Publike</mat-label>
+      <mat-select formControlName="cenonTerritorinENdertesavePublike" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.cenonTerritorinENdertesavePublike.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Shkel Truallinin E Rruges Ekzistuese</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Shkel Truallinin E Rruges Ekzistuese</mat-label>
+      <mat-select formControlName="shkelTruallininERrugesEkzistuese" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.shkelTruallininERrugesEkzistuese.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Cenon Vijen Blu</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Cenon Vijen Blu</mat-label>
+      <mat-select formControlName="cenonVijenBlu" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.cenonVijenBlu.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Eshte Ndertuar Minimalisht nje Kat</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Eshte Ndertuar Minimalisht nje Kat</mat-label>
+      <mat-select formControlName="eshteNdertuarMinimalishtnjeKat" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.eshteNdertuarMinimalishtnjeKat.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <h4>Gjendet Ne rrethanat e Mos lekalizimit Sipas ligjit 20_2020</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Gjendet Ne rrethanat e Mos lekalizimit Sipas ligjit 20_2020</mat-label>
+      <mat-select formControlName="gjendetNerrethanateMoslekalizimitSipasligjit20_2020" required>
+        <mat-option>--</mat-option>
+        <mat-option value="true">Po</mat-option>
+        <mat-option value="false">Jo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.gjendetNerrethanateMoslekalizimitSipasligjit20_2020.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+
+    <h4>Eshte Objekt Apo Shtese</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Eshte Objekt Apo Shtese</mat-label>
+      <mat-select formControlName="eshteObjektApoShtese" required>
+        <mat-option>--</mat-option>
+        <mat-option value="Objekt">Objekt</mat-option>
+        <mat-option value="Shtese">Shtese</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.eshteObjektApoShtese.errors?.required">Kjo fushe eshte i detyrueshshme</mat-error>
+    </mat-form-field>
+    <br />
+
+    <!-- <mat-slide-toggle formControlName="cenonKritereteMoscenimit">Cenon Kriteret e Moscenimit</mat-slide-toggle>
+    <br /> -->
+
+
+
+
+    <br />
+    <br />
+    <mat-card-actions class="text-center">
+      <button mat-raised-button color="primary">Merr rezultatin</button>
+    </mat-card-actions>
+    </form>
+  </div>
+  <div class="help">
+    <mat-list>
+      <div mat-subheader>Lutemi ti referoheni dokumentacioneve te meposhtme per plotesimin e fushave:</div>
+      <mat-list-item>
+        <mat-icon mat-list-icon>link</mat-icon>
+        <div mat-line>PËR PËRFUNDIMIN E PROCESEVE KALIMTARE TË PRONËSISË
+          NË REPUBLIKËN E SHQIPËRISË</div>
+        <div mat-line>
+          <a href="http://www.parlament.al/Files/ProjektLigje/20200310112944ligj%20nr%20%2020%20dt%20%205%203%202020.pdf">http://www.parlament.al/Files/ProjektLigje/20200310112944ligj%20nr%20%2020%20dt%20%205%203%202020.pdf</a></div>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>link</mat-icon>
+        <div mat-line>Ligji nr. 9482, datë 3.4.2006, Për legalizimin, urbanizimin dhe ...</div>
+        <div mat-line>
+          <a href="https://infrastruktura.gov.al/wp-content/uploads/2017/10/ligji_9482_i_azhornuar.docx">https://infrastruktura.gov.al/wp-content/uploads/2017/10/ligji_9482_i_azhornuar.docx</a></div>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>link</mat-icon>
+        <div mat-line>VENDIM Nr. 1180, datë 24.12.2020</div>
+        <div mat-line>
+          <a href="http://planifikimi.gov.al/index.php?eID=dumpFile&t=f&f=6164&token=b77323d9a9126e851ee0ba2c63329363f0258ebd">http://planifikimi.gov.al/index.php?eID=dumpFile&t=f&f=6164&token=b77323d9a9126e851ee0ba2c63329363f0258ebd</a></div>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>link</mat-icon>
+        <div mat-line>VKM nr.1178, datë 24.12.2020</div>
+        <div mat-line>
+          <a href="https://www.ashk.gov.al/2021/06/02/vkm-nr-1178-date-24-12-2020-per-percaktimin-e-dokumentacionit-dhe-te-rregullave-te-hollesishme-te-evidentimit-te-ndertimeve-pa-leje/">https://www.ashk.gov.al/2021/06/02/vkm-nr-1178-date-24-12-2020-per-percaktimin-e-dokumentacionit-dhe-te-rregullave-te-hollesishme-te-evidentimit-te-ndertimeve-pa-leje/</a></div>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>link</mat-icon>
+        <div mat-line>VENDIM Nr.1040, datë 25.11.2020</div>
+        <div mat-line>
+          <a href="http://planifikimi.gov.al/index.php?eID=dumpFile&t=f&f=5769&token=10976de5a1f45dae0bf2a8620c3c4f61eda53262">http://planifikimi.gov.al/index.php?eID=dumpFile&t=f&f=5769&token=10976de5a1f45dae0bf2a8620c3c4f61eda53262</a></div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+</div>
+
+
+

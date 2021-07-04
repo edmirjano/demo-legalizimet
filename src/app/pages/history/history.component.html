@@ -1,0 +1,67 @@
+<div fxLayout="row">
+
+  <div class="text-center">
+    <h2>Historiku i legalizimeve te fundit</h2>
+  </div>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="emri">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Emri</th>
+      <td mat-cell *matCellDef="let row">{{ row.emri }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cenonKritereteMoscenimit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Cenon Kriteret e Moscenimit</th>
+      <td mat-cell *matCellDef="let row">{{ row.cenonKritereteMoscenimit ? 'Po': 'Jo' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="siperfaqja">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Siperfaqja</th>
+      <td mat-cell *matCellDef="let row">{{ row.siperfaqja }} m2</td>
+    </ng-container>
+
+    <ng-container matColumnDef="eshteObjektNeShkeljeTeLejesSeNdertimit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Eshte Objekt Ne Shkelje Te Lejes Se Ndertimit</th>
+      <td mat-cell *matCellDef="let row">{{ row.eshteObjektNeShkeljeTeLejesSeNdertimit ? 'Po': 'Jo' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="eshtePosedues">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Eshte Posedues</th>
+      <td mat-cell *matCellDef="let row">{{ row.eshtePosedues ? 'Po': 'Jo' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="zoneInformaleApoUrbane">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Zone Informale Apo Urbane</th>
+      <td mat-cell *matCellDef="let row">{{ row.zoneInformaleApoUrbane}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="eshteVijeBregdetare">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Eshte Vije Bregdetares</th>
+      <td mat-cell *matCellDef="let row">{{ row.eshteVijeBregdetare ? 'Po': 'Jo' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="kurifiRrugor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Kurifi Rrugor</th>
+      <td mat-cell *matCellDef="let row">{{ row.kurifiRrugor }} m</td>
+    </ng-container>
+
+    <ng-container matColumnDef="rrugeKombetareApoJoKombetare">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Rruge Kombetare Apo JoKombetare</th>
+      <td mat-cell *matCellDef="let row">{{ row.rrugeKombetareApoJoKombetare ? 'Po': 'Jo' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="output">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Rezultati</th>
+      <td mat-cell *matCellDef="let row" [ngClass]="row.output == 1 ? 'green' : 'red'">
+        {{(row.result * 100).toFixed(2)}} % {{ row.output == 1 ? 'Kualifikuar': 'Nuk legalizohet' }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
+</div>
