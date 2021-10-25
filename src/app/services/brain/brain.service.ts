@@ -7,7 +7,8 @@ import { LegalObject } from 'src/app/models/legal-object';
 })
 export class BrainService {
   // BASE_URL = "http://localhost:3000";
-  BASE_URL = "https://legalizimet-5579a.web.app";
+  // BASE_URL = "http://localhost:5000/legalizimet-5579a/us-central1/fbapp";
+  BASE_URL = "https://legalizimet.herokuapp.com";
   constructor(
     private http: HttpClient
   ) { }

@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "public": "y",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -8,8 +7,12 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/getHistory",
+        "function": "historyFunc"
+      },
+      {
+        "source": "/getResult",
+        "function": "resultFunc"
       }
     ]
   }
